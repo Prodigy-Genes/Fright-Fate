@@ -1,0 +1,548 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-light: #0a0a0a;
+  --color-dark: #1a4d2e;
+  --ghost-green: #2d5016;
+  --slime-green: #4a7c0c;
+  --decay-brown: #3c2415;
+  --bone-white: #f5f2e8;
+  --blood-red: #5c1e1e;
+  --shadow-black: #0d0d0d;
+  --mold-yellow: #6b5b2f;
+  --corpse-gray: #4a4a3a;
+}
+
+/* Background Audio Element */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  background-image: url('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEbBSaHy/DSgzEGHm7A7+OZSA0NVqzj6qhVFAlCo+XzwWUdBSiG');
+}
+
+.accent-text {
+  @apply text-green-400;
+  text-shadow: 0 0 8px rgba(74, 124, 12, 0.8), 0 0 16px rgba(45, 80, 22, 0.6);
+  filter: drop-shadow(0 0 4px rgba(74, 124, 12, 0.4));
+}
+
+body {
+  font-family:
+    "Creepster",
+    "Chiller",
+    "Nosifer",
+    "Butcherman",
+    "Griffy",
+    "Pirata One",
+    "Cinzel",
+    serif;
+  color: var(--bone-white);
+  background: 
+    radial-gradient(ellipse at top, rgba(45, 80, 22, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(60, 36, 21, 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0d0d 0%, #1a1a0d 30%, #2d1a0d 70%, #0d0d0d 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background with floating particles and mold spores */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 15% 30%, rgba(45, 80, 22, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(74, 124, 12, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 20%, rgba(107, 91, 47, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 30% 80%, rgba(92, 30, 30, 0.12) 0%, transparent 45%);
+  animation: float-spores 25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Floating spores and mold animation */
+@keyframes float-spores {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(10px) rotate(180deg) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-8px) rotate(270deg) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Decay glitch effect for authentication elements */
+@keyframes decay-glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  3% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(90deg);
+  }
+  6% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(180deg);
+  }
+  9% {
+    transform: translate(-1px, -1px);
+    filter: hue-rotate(270deg);
+  }
+  12% {
+    transform: translate(1px, 1px);
+    filter: hue-rotate(360deg);
+  }
+  15% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Medieval horror auth input fields with slime aesthetics */
+.auth-input-field {
+  @apply w-full px-4 py-3 rounded-lg bg-gray-900/90 border-2 border-green-900/70 text-green-200 placeholder-green-600/80 outline-none transition-all duration-300;
+  background: 
+    linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(26, 26, 13, 0.9) 50%, rgba(45, 26, 13, 0.85) 100%),
+    repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(74, 124, 12, 0.05) 10px, rgba(74, 124, 12, 0.05) 11px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 0 15px rgba(45, 80, 22, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 -1px 2px rgba(74, 124, 12, 0.1);
+  font-family: 'Cinzel', serif;
+  position: relative;
+  border-radius: 8px;
+}
+
+.auth-input-field::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, var(--ghost-green), var(--slime-green), var(--decay-brown), var(--mold-yellow));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.auth-input-field:focus {
+  border-color: var(--slime-green);
+  color: var(--bone-white);
+  box-shadow: 
+    0 0 25px rgba(74, 124, 12, 0.5),
+    0 0 50px rgba(45, 80, 22, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 2px rgba(107, 91, 47, 0.2);
+  animation: slime-pulse 3s ease-in-out infinite;
+}
+
+.auth-input-field:focus::before {
+  opacity: 0.6;
+  animation: decay-shimmer 2s ease-in-out infinite;
+}
+
+.auth-input-field:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 0 20px rgba(45, 80, 22, 0.4),
+    0 3px 12px rgba(0, 0, 0, 0.5);
+  background: 
+    linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(45, 26, 13, 0.9) 100%),
+    repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(74, 124, 12, 0.08) 8px, rgba(74, 124, 12, 0.08) 9px);
+}
+
+/* Medieval ghost horror buttons */
+.auth-button {
+  @apply w-full px-4 py-3 rounded-lg font-bold text-black transition-all duration-300 relative overflow-hidden;
+  background: linear-gradient(135deg, var(--slime-green) 0%, var(--ghost-green) 50%, var(--mold-yellow) 100%);
+  box-shadow: 
+    0 0 20px rgba(74, 124, 12, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(245, 242, 232, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--decay-brown);
+}
+
+.auth-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 242, 232, 0.3), transparent);
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.auth-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  color: var(--bone-white);
+  box-shadow: 
+    0 0 35px rgba(74, 124, 12, 0.6),
+    0 0 70px rgba(107, 91, 47, 0.4),
+    0 8px 25px rgba(0, 0, 0, 0.7);
+  animation: decay-glitch 0.5s ease-in-out;
+  background: linear-gradient(135deg, var(--ghost-green) 0%, var(--slime-green) 50%, var(--decay-brown) 100%);
+}
+
+.auth-button:hover::before {
+  left: 100%;
+}
+
+.auth-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.auth-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  box-shadow: none;
+  animation: none;
+  color: #6b7280;
+}
+
+/* Enhanced horror scrollbar with medieval theme */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a0d 50%, #2d1a0d 100%);
+  border-radius: 8px;
+  border: 1px solid var(--decay-brown);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ghost-green) 0%, var(--slime-green) 50%, var(--decay-brown) 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 10px rgba(74, 124, 12, 0.5),
+    inset 0 1px 0 rgba(245, 242, 232, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--mold-yellow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--slime-green) 0%, var(--ghost-green) 50%, var(--mold-yellow) 100%);
+  box-shadow: 
+    0 0 15px rgba(107, 91, 47, 0.7),
+    inset 0 1px 0 rgba(245, 242, 232, 0.2);
+}
+
+/* Advanced glowing text effects with medieval colors */
+.glow-green {
+  color: var(--slime-green);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px rgba(74, 124, 12, 0.8);
+  animation: ghost-flicker 4s ease-in-out infinite alternate;
+}
+
+.glow-bone {
+  color: var(--bone-white);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px rgba(245, 242, 232, 0.8),
+    0 0 15px rgba(245, 242, 232, 0.6),
+    0 0 20px rgba(245, 242, 232, 0.4);
+  animation: bone-glow 3s ease-in-out infinite;
+}
+
+.glow-decay {
+  color: var(--mold-yellow);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px rgba(107, 91, 47, 0.8),
+    0 0 20px rgba(107, 91, 47, 0.6);
+  animation: decay-pulse 3.5s ease-in-out infinite reverse;
+}
+
+/* Ghost flickering animation */
+@keyframes ghost-flicker {
+  0%, 15%, 20%, 25%, 50%, 55%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px rgba(74, 124, 12, 0.8);
+  }
+  18%, 22%, 53% {
+    opacity: 0.3;
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px rgba(74, 124, 12, 0.4);
+  }
+}
+
+/* Bone glow animation */
+@keyframes bone-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px rgba(245, 242, 232, 0.8),
+      0 0 15px rgba(245, 242, 232, 0.6),
+      0 0 20px rgba(245, 242, 232, 0.4);
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px rgba(245, 242, 232, 0.6),
+      0 0 8px rgba(245, 242, 232, 0.4),
+      0 0 12px rgba(245, 242, 232, 0.2);
+    opacity: 0.7;
+  }
+}
+
+/* Decay pulse animation */
+@keyframes decay-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px rgba(107, 91, 47, 0.8);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 
+      0 0 8px currentColor,
+      0 0 16px currentColor,
+      0 0 24px rgba(107, 91, 47, 0.9);
+    transform: scale(1.02);
+  }
+}
+
+/* Slime pulse for focused elements */
+@keyframes slime-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 25px rgba(74, 124, 12, 0.5),
+      0 0 50px rgba(45, 80, 22, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 35px rgba(74, 124, 12, 0.7),
+      0 0 70px rgba(45, 80, 22, 0.5);
+  }
+}
+
+/* Decay shimmer animation */
+@keyframes decay-shimmer {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced pulsing animation for loading states */
+@keyframes pulse-slime {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(74, 124, 12, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(74, 124, 12, 0.8);
+  }
+}
+
+.pulse-slime {
+  animation: pulse-slime 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Ghost text animation */
+@keyframes ghost-text {
+  0% {
+    opacity: 0.2;
+    transform: translateY(2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(2px);
+  }
+}
+
+.ghost-text {
+  animation: ghost-text 3s ease-in-out infinite;
+  font-family: 'Cinzel', serif;
+}
+
+/* Spectral effect */
+.spectral {
+  background: linear-gradient(45deg, #2d5016, #4a7c0c, #6b5b2f, #3c2415, #5c1e1e);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: spectral-shift 4s ease-in-out infinite;
+}
+
+@keyframes spectral-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Cobweb scan line effect */
+.cobweb-lines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(74, 124, 12, 0.02) 3px,
+    rgba(74, 124, 12, 0.02) 6px
+  );
+  pointer-events: none;
+  animation: cobweb-drift 0.2s linear infinite;
+}
+
+@keyframes cobweb-drift {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  100% {
+    transform: translateX(6px) translateY(6px);
+  }
+}
+
+/* Loading spinner with medieval horror theme */
+.medieval-spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid rgba(45, 80, 22, 0.3);
+  border-top: 4px solid var(--slime-green);
+  border-right: 4px solid var(--mold-yellow);
+  border-radius: 50%;
+  animation: medieval-spin 1.5s linear infinite;
+  box-shadow: 
+    0 0 25px rgba(74, 124, 12, 0.4),
+    inset 0 0 25px rgba(107, 91, 47, 0.2);
+}
+
+@keyframes medieval-spin {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 
+      0 0 25px rgba(74, 124, 12, 0.4),
+      inset 0 0 25px rgba(107, 91, 47, 0.2);
+  }
+  33% {
+    box-shadow: 
+      0 0 35px rgba(107, 91, 47, 0.5),
+      inset 0 0 35px rgba(92, 30, 30, 0.3);
+  }
+  66% {
+    box-shadow: 
+      0 0 30px rgba(60, 36, 21, 0.6),
+      inset 0 0 30px rgba(45, 80, 22, 0.4);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 
+      0 0 25px rgba(74, 124, 12, 0.4),
+      inset 0 0 25px rgba(107, 91, 47, 0.2);
+  }
+}
+
+/* Creepy ambient sound styles */
+.ambient-audio {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fog effect overlay */
+.fog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse 800px 600px at 50% 0%, rgba(74, 124, 12, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse 600px 400px at 0% 100%, rgba(107, 91, 47, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 300px at 100% 50%, rgba(92, 30, 30, 0.06) 0%, transparent 40%);
+  animation: fog-drift 30s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fog-drift {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(20px) translateY(-10px) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-15px) translateY(15px) scale(0.95);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateX(10px) translateY(-20px) scale(1.05);
+    opacity: 0.8;
+  }
+}

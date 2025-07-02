@@ -1,0 +1,340 @@
+/* GameResults Component Styles */
+
+.game-results-container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+/* Header Styles */
+.results-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.results-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-family: 'Creepster', 'Chiller', 'Nosifer', serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px rgba(107, 91, 47, 0.8),
+    0 0 30px rgba(60, 36, 21, 0.6);
+}
+
+.results-subtitle {
+  font-size: 1.5rem;
+  color: var(--corpse-gray);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+}
+
+/* Narrative Section */
+.narrative-section {
+  background: linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(26, 26, 13, 0.9) 50%, rgba(45, 26, 13, 0.85) 100%);
+  border: 2px solid var(--decay-brown);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 0 25px rgba(60, 36, 21, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.narrative-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.narrative-text {
+  color: var(--bone-white);
+  line-height: 1.8;
+  white-space: pre-line;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Rankings Section */
+.rankings-section {
+  margin-bottom: 3rem;
+}
+
+.rankings-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Player Cards */
+.player-card {
+  background: linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(26, 26, 13, 0.9) 50%, rgba(45, 26, 13, 0.85) 100%);
+  border: 2px solid var(--decay-brown);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  background: linear-gradient(45deg, var(--ghost-green), var(--slime-green), var(--decay-brown), var(--mold-yellow));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  animation: decay-shimmer 3s ease-in-out infinite;
+}
+
+.player-card:hover::before {
+  opacity: 0.3;
+}
+
+.winner-card {
+  border-color: var(--slime-green);
+  background: 
+    linear-gradient(135deg, rgba(45, 80, 22, 0.15) 0%, rgba(13, 13, 13, 0.95) 50%, rgba(26, 26, 13, 0.9) 100%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(74, 124, 12, 0.05) 20px, rgba(74, 124, 12, 0.05) 21px);
+  box-shadow: 
+    0 0 35px rgba(74, 124, 12, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.eliminated-card {
+  border-color: var(--blood-red);
+  background: 
+    linear-gradient(135deg, rgba(92, 30, 30, 0.15) 0%, rgba(13, 13, 13, 0.95) 50%, rgba(26, 26, 13, 0.9) 100%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(92, 30, 30, 0.05) 20px, rgba(92, 30, 30, 0.05) 21px);
+  box-shadow: 
+    0 0 35px rgba(92, 30, 30, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.standard-card {
+  border-color: var(--decay-brown);
+}
+
+/* Player Header */
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rank-icon {
+  font-size: 3rem;
+  animation: ghost-flicker 4s ease-in-out infinite alternate;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.player-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--bone-white);
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rank-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rank-winner {
+  color: var(--slime-green);
+  text-shadow: 
+    0 0 8px currentColor,
+    0 0 16px rgba(74, 124, 12, 0.6);
+}
+
+.rank-podium {
+  color: var(--mold-yellow);
+  text-shadow: 
+    0 0 8px currentColor,
+    0 0 16px rgba(107, 91, 47, 0.6);
+}
+
+.rank-eliminated {
+  color: var(--blood-red);
+  text-shadow: 
+    0 0 8px currentColor,
+    0 0 16px rgba(92, 30, 30, 0.6);
+}
+
+.player-stats {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.rank-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+}
+
+.survival-score {
+  font-size: 0.9rem;
+  color: var(--corpse-gray);
+  font-family: 'Cinzel', serif;
+}
+
+/* Commentary Section */
+.commentary-section {
+  background: linear-gradient(135deg, rgba(74, 74, 58, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.commentary-text {
+  color: var(--bone-white);
+  line-height: 1.6;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+}
+
+/* Death Scene */
+.death-scene {
+  background: linear-gradient(135deg, rgba(92, 30, 30, 0.2) 0%, rgba(60, 36, 21, 0.15) 100%);
+  border: 2px solid var(--blood-red);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 
+    0 0 15px rgba(92, 30, 30, 0.3),
+    inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.death-text {
+  color: #ff8a8a;
+  font-size: 0.9rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.death-text strong {
+  color: var(--blood-red);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px rgba(92, 30, 30, 0.8);
+}
+
+/* Action Section */
+.action-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.play-again-btn {
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  max-width: 320px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.share-text {
+  color: var(--corpse-gray);
+  font-size: 0.9rem;
+  font-family: 'Cinzel', serif;
+  max-width: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-results-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .results-title {
+    font-size: 2.5rem;
+  }
+  
+  .player-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .player-stats {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .player-card {
+    padding: 1.5rem;
+  }
+  
+  .narrative-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-title {
+    font-size: 2rem;
+  }
+  
+  .player-name {
+    font-size: 1.5rem;
+  }
+  
+  .rank-number {
+    font-size: 2rem;
+  }
+  
+  .rank-icon {
+    font-size: 2.5rem;
+  }
+}
